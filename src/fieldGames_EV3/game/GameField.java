@@ -16,7 +16,7 @@ public class GameField {
 	}
 	
 	public boolean setzeSpielstein(int index, String player) {
-		if(this.fields[index].contains("SPIELER") || index < 0) return false;
+		if(!this.fields[index].isBlank() || index < 0) return false;
 		this.fields[index] = player;
 		this.lastField = index;
 		return true;
