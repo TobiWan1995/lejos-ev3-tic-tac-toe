@@ -45,7 +45,7 @@ public class Roboter {
 	public void entfernePapier() throws InterruptedException {
 		zAchse.deaktiviere();
 		yAchse.setSpeed(Integer.MAX_VALUE);
-		yAchse.backward(2500);
+		yAchse.backward(1000);
 	}
 
 	@Override

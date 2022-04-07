@@ -14,7 +14,7 @@ public class RoboterPrinter extends Printer {
 	
 	public RoboterPrinter(double skalar, Roboter robo){
 		this.skalarY = skalar; 
-		// somehow X moves only 1/3 of Y
+		// X moves only 1/3 of Y
 		this.skalarX = 3*skalar;
 		this.robo = robo;
 	}
@@ -53,8 +53,8 @@ public class RoboterPrinter extends Printer {
 		double positionY = (this.robo.getCurrentPosition().getY() - (index/gamefield.getY())*this.skalarY);
 		try {
 			this.robo.moveToPosition(new Position2D(positionX + this.robo.getCurrentPosition().getX(), positionY + this.robo.getCurrentPosition().getY()), 75);
-			// move into field to start drawing - resting on circumference
-			this.robo.moveToPosition(new Position2D(this.robo.getCurrentPosition().getX() - (skalarX/2), this.robo.getCurrentPosition().getY() - (skalarY/6)), 75);
+			// move into field to start drawing
+			// this.robo.moveToPosition(new Position2D(this.robo.getCurrentPosition().getX() - (skalarX/2), this.robo.getCurrentPosition().getY() - (skalarY/6)), 75);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

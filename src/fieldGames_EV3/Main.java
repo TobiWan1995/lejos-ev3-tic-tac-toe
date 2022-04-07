@@ -31,9 +31,11 @@ public class Main {
 	} 
 	
 	public static void playTicTacToe() {
+		int numberOfPlayers;
+		String[] gameModes = new String[] {"Player vs. Player", "Player vs. Bot"};
 		// select game mode
 		LCD.drawString("Select Gamemod!", 0, 0);
-		textMenu = new TextMenu(new String[] {"Player vs. Player", "Player vs. Bot"});
+		textMenu = new TextMenu(gameModes);
 		int gameMode = textMenu.select();
 		LCD.clear();
 		
@@ -45,17 +47,15 @@ public class Main {
 			for(int i = 2; i <= PlayerEnumeration.values().length; i++)
 				numberOfPlayersArray[i-2] = String.valueOf(i);
 			textMenu = new TextMenu(numberOfPlayersArray);
-			int numberOfPlayers = Integer.valueOf(numberOfPlayersArray[textMenu.select()]);
+			numberOfPlayers = Integer.valueOf(numberOfPlayersArray[textMenu.select()]);
 			LCD.clear();			
-			
-			// initialize roboPrinter - startPosition
-			roboPrinter.initializeStartPosition();
 			
 			// initialize game -> fieldSize is numberOfPlayers+1
 			game = new TicTacToe(numberOfPlayers, numberOfPlayers + 1);
 		}
 		else {
-			game = new TicTacToe(2, 3);
+			numberOfPlayers = 2;
+			game = new TicTacToe(numberOfPlayers, numberOfPlayers + 1);
 		}
 		
 		// initialize roboPrinter - startPosition
@@ -64,40 +64,46 @@ public class Main {
 		// print the empty gameField
 		roboPrinter.printGameField(game.getGameField());
 		
+		// show gameSettings on Console
+		// consolePrinter.printGameSettings(numberOfPlayers, numberOfPlayers+1, gameModes[gameMode]);
+		
 		String winner = "";
 			
-		while(winner.isBlank()) {		
+		while(winner.equals("")) {		
 			// iterate through every players turn
 			for(PlayerEnumeration player : game.getPlayersWithToken().keySet()) {
-				boolean validPull = false;
+				boolean validMove = false;
 				int selectedField = -1;
 			
-				if(gameMode == 0 || player.toString().equals("Player1")) {
+				if(gameMode == 0 || player.toString().equals("SPIELER1")) {
 					// display current gameField for selection
 					textMenu = new TextMenu(game.getGameField().getFields());
 					// let the player pick a valid Field
-					while(!validPull) {
+					while(!validMove) {
 						selectedField = textMenu.select();
-						validPull = game.getGameField().setzeSpielstein(selectedField, player.toString());
+						validMove = game.getGameField().setzeSpielstein(selectedField, player.toString());
 					}
 				} else {
 					selectedField = ((TicTacToe) game).bestMove(); 
+					game.getGameField().setzeSpielstein(selectedField, player.toString());
 				}
 				
 				// draw players token into selected field of gameField
 				roboPrinter.drawFormIntoField(selectedField, game.getPlayersWithToken().get(player), game.getGameField());
 				
 				// print gameField on console
-				consolePrinter.printGameField(game.getGameField());
+				// consolePrinter.printGameField(game.getGameField());
 				
 				winner = ((TicTacToe) game).checkForWinner(player.toString());
 				
-				if(!winner.isBlank()) break;
+				if(!winner.equals("")) break;
 			}
 		}
 		
 		roboPrinter.removePaper();
-		System.out.println(winner.equals("Tie") ? winner : winner + "won the game!");
+		LCD.clear();
+		LCD.drawString(winner.equals("Tie") ? winner : winner + " won!", 0, 0);
+		Button.ENTER.waitForPress();
 	}
 	
 }

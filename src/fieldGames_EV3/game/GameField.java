@@ -16,7 +16,7 @@ public class GameField {
 	}
 	
 	public boolean setzeSpielstein(int index, String player) {
-		if(!this.fields[index].isBlank() || index < 0) return false;
+		if(this.fields[index].contains("SPIELER")) return false;
 		this.fields[index] = player;
 		this.lastField = index;
 		return true;
@@ -28,6 +28,10 @@ public class GameField {
 	
 	public int getLastFieldIndex() {
 		return this.lastField;
+	}
+	
+	public void setLastFieldIndex(int index) {
+		this.lastField = index;
 	}
 	
 	public int getX() {

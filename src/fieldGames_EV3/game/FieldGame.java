@@ -15,7 +15,7 @@ import fieldGames_EV3.graphics.Polygon;
 public abstract class FieldGame {
 	
 	protected GameField gameField;
-	protected EnumMap<PlayerEnumeration, EV3PrintableForm> playerTokenMapping = new EnumMap<>(PlayerEnumeration.class);
+	protected EnumMap<PlayerEnumeration, EV3PrintableForm> playerTokenMapping = new EnumMap<PlayerEnumeration, EV3PrintableForm>(PlayerEnumeration.class);
 	
 	protected abstract void initPlayerFormMapping(int numberOfPlayers);
 	
