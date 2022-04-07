@@ -89,6 +89,7 @@ public class Main {
 				}
 				
 				// draw players token into selected field of gameField
+				// !! ONLY WORKS WITH FIELDSIZE 4*4 !! -> Fix this 
 				roboPrinter.drawFormIntoField(selectedField, game.getPlayersWithToken().get(player), game.getGameField());
 				
 				// print gameField on console
@@ -100,7 +101,7 @@ public class Main {
 			}
 		}
 		
-		roboPrinter.removePaper();
+		// roboPrinter.removePaper();
 		LCD.clear();
 		LCD.drawString(winner.equals("Tie") ? winner : winner + " won!", 0, 0);
 		Button.ENTER.waitForPress();

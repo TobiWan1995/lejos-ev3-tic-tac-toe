@@ -54,18 +54,11 @@ public class RoboterPrinter extends Printer {
 		try {
 			this.robo.moveToPosition(new Position2D(positionX + this.robo.getCurrentPosition().getX(), positionY + this.robo.getCurrentPosition().getY()), 75);
 			// move into field to start drawing
-			// this.robo.moveToPosition(new Position2D(this.robo.getCurrentPosition().getX() - (skalarX/2), this.robo.getCurrentPosition().getY() - (skalarY/6)), 75);
+			this.robo.moveToPosition(new Position2D(this.robo.getCurrentPosition().getX() - (skalarX/2), this.robo.getCurrentPosition().getY() - (skalarY/6)), 75);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		// cast to form with accordingly draw-function
-		if(form instanceof Mark) form = (Mark) form;
-		
-		if(form instanceof Circle) form = (Circle) form;		
-		
-		if(form instanceof Polygon) form = (Polygon) form;
 		
 		// leave 10mm space in each field for form
 		form.draw(radius, this.robo);
