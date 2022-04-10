@@ -29,7 +29,7 @@ public class Main {
 	public static void main(String[] args) {
 		playTicTacToe();
 	} 
-	
+	 
 	public static void playTicTacToe() {
 		int numberOfPlayers;
 		String[] gameModes = new String[] {"Player vs. Player", "Player vs. Bot"};
@@ -54,8 +54,7 @@ public class Main {
 			game = new TicTacToe(numberOfPlayers, numberOfPlayers + 1);
 		}
 		else {
-			numberOfPlayers = 2;
-			game = new TicTacToe(numberOfPlayers, numberOfPlayers + 1);
+			game = new TicTacToe(2, 3);
 		}
 		
 		// initialize roboPrinter - startPosition
@@ -63,9 +62,6 @@ public class Main {
 		
 		// print the empty gameField
 		roboPrinter.printGameField(game.getGameField());
-		
-		// show gameSettings on Console
-		// consolePrinter.printGameSettings(numberOfPlayers, numberOfPlayers+1, gameModes[gameMode]);
 		
 		String winner = "";
 			
@@ -89,11 +85,7 @@ public class Main {
 				}
 				
 				// draw players token into selected field of gameField
-				// !! ONLY WORKS WITH FIELDSIZE 4*4 !! -> Fix this 
 				roboPrinter.drawFormIntoField(selectedField, game.getPlayersWithToken().get(player), game.getGameField());
-				
-				// print gameField on console
-				// consolePrinter.printGameField(game.getGameField());
 				
 				winner = ((TicTacToe) game).checkForWinner(player.toString());
 				

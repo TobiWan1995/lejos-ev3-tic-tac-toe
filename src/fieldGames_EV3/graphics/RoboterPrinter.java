@@ -41,6 +41,9 @@ public class RoboterPrinter extends Printer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+		// reset skalarX and skalarY to default value
+		skalarX = Math.abs(skalarX);
+		skalarY = Math.abs(skalarY);
 	}
 	
 	public void drawFormIntoField(int index, EV3PrintableForm form, GameField gamefield) {
@@ -60,7 +63,6 @@ public class RoboterPrinter extends Printer {
 			e.printStackTrace();
 		}
 		
-		// leave 10mm space in each field for form
 		form.draw(radius, this.robo);
 	}
 	
