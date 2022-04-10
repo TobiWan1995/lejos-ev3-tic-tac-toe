@@ -4,14 +4,14 @@ import plott3r_V1.Roboter;
 import positions.Position2D;
 import positions.Position3D;
 
-public class Mark implements EV3PrintableForm {
+public class Cross implements EV3PrintableForm {
 
 	@Override
 	public void draw(double umfang, Roboter robo) {
 		this.adjustPositionXForMark(10, robo);
-		this.drawVerticalLine(10, true, robo);
-		this.adjustPositionXForMark(10, robo);
-		this.drawVerticalLine(10, false, robo);
+		this.drawVerticalLine(20, true, robo);
+		this.adjustPositionXForMark(20, robo);
+		this.drawVerticalLine(20, false, robo);
 	}
 	
 	public void adjustPositionXForMark(int amount, Roboter robo) {

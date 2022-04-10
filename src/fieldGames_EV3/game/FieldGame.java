@@ -9,7 +9,7 @@ import java.util.EnumMap;
 
 import fieldGames_EV3.graphics.Circle;
 import fieldGames_EV3.graphics.EV3PrintableForm;
-import fieldGames_EV3.graphics.Mark;
+import fieldGames_EV3.graphics.Cross;
 import fieldGames_EV3.graphics.Polygon;
 
 public abstract class FieldGame {

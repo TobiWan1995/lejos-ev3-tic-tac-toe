@@ -1,6 +1,6 @@
 package fieldGames_EV3.game;
 import fieldGames_EV3.graphics.Circle;
-import fieldGames_EV3.graphics.Mark;
+import fieldGames_EV3.graphics.Cross;
 import fieldGames_EV3.graphics.Polygon;
 
 public class TicTacToe extends FieldGame {
@@ -16,9 +16,9 @@ public class TicTacToe extends FieldGame {
 			PlayerEnumeration[] players = PlayerEnumeration.values();
 			for(int i = 0; i < numberOfPlayers ; i++) {
 				if(numberOfPlayers != 2)
-					playerTokenMapping.put(players[i], (new Polygon(3+i)));
+					playerTokenMapping.put(players[i], (i == 0 ? new  Cross() : new Polygon(i + 2 >= 6 && i % 2 != 0 ? i + 3 : i + 2)));
 				else
-					playerTokenMapping.put(players[i], (new Polygon(3+i)));
+					playerTokenMapping.put(players[i], (i == 0 ? new Cross() : new Polygon(12)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -93,7 +93,7 @@ public class Main {
 			}
 		}
 		
-		// roboPrinter.removePaper();
+		roboPrinter.removePaper();
 		LCD.clear();
 		LCD.drawString(winner.equals("Tie") ? winner : winner + " won!", 0, 0);
 		Button.ENTER.waitForPress();
